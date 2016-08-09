@@ -1,28 +1,36 @@
-var path = require("path");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: {
-    app: ["./app/main.js"]
-  },
+  entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, "build"),
-    publicPath: "/assets/",
-    filename: "bundle.js"
+    path: 'build/',
+    filename: 'bundle.js'
   },
-  devtool: 'inline-source-map',
   module: {
     loaders: [
       {
-        test: path.join(__dirname, 'app'),
-        loader: 'babel-loader',
+        test: /\.js$/,
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react']
-        }
+        loader: 'babel-loader'
       },
-      { test: /\.css$/, loader: "style-loader!css-loader" },
-      { test: /\.png$/, loader: "url-loader?limit=100000" },
-      { test: /\.jpg$/, loader: "file-loader" }
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+      }
     ]
-  }
-};
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'League o\' Graphs',
+      template: './src/index.template.html'
+    }),
+    new ExtractTextPlugin('bundle.css', {
+      allChunks: true
+    })
+  ]
+}

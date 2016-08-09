@@ -1,8 +1,8 @@
-import {CONFIG} from './../../config'
+import { CONFIG } from './../../config'
 
 export const POKEMON = {
     REQUEST: 'POKEMON.REQUEST',
-    RECEIVE: 'POKEMON.RECEIVE',
+    RECEIVE: 'POKEMON.RECEIVE'
 }
 
 function requestPokemon() {
