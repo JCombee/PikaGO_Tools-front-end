@@ -4,10 +4,10 @@
   "description": "Front-end of the PikaGO tools webapp.",
   "main": " ",
   "scripts": {
-    "dev": "./node_modules/.bin/webpack-dev-server --content-base build/ --hot --inline",
+    "dev": "./node_modules/.bin/webpack-dev-server --content-base build/ --hot --inline -d --progress --history-api-fallback",
     "build": "./node_modules/.bin/webpack"
   },
-  "author": "2CodersAtNoxus",
+  "author": "Jerke Combee",
   "license": "ISC",
   "dependencies": {
     "immutable": "^3.8.1",
@@ -34,6 +34,7 @@
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "^1.14.1"
   }
 }

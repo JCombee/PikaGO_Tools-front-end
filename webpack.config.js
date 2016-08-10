@@ -26,7 +26,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'League o\' Graphs',
+      title: 'PikaGO tools',
       template: './src/index.template.html'
     }),
     new ExtractTextPlugin('bundle.css', {
